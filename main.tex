@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\begin{document}
+\begin{titlepage}
+\centering
+{\bfseries\LARGE Fundación Universitaria Konrad Lorenz\par}
+\vfill
+\noindent\hrulefill \\
+{\scshape\Huge Project Mathematical Modeling\par}
+\vspace{0.5cm}
+{\scshape\Large Modelación y Simulación I \par}
+\vspace{0.5cm}
+{\scshape\Large 2025-I \par} 
+\noindent\hrulefill \\
+\vfill
+{\bfseries\Large Profesor: Julian Orlando Jimenez Cardenas\par}
+\vfill
+{\Large Briam Alexander Palma Murillo - 614232005\par}
+{\Large Gabriela Castañeda Monroy- 614232709\par}
+\vfill
+{\large Marzo de 2025 \par} 
+\end{titlepage}
+\setcounter{page}{1}
+% Aqui iria la parte de bases de datos
+\section {Requisitos de Datos}
+\subsection{Simple thermodynamic model of thermostats for a liquid
+into a tank: an analytical approach 
+ }
+ \begin{itemize}
+    \item https://0310a08hk-y-https-link-springer-com.konrad.metaproxy.org/article/10.1007/s10665-024-10416-5
+    
+    \item Imagen de referencia:
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{CAP.jpeg}
+    \caption{Descripción de la imagen}
+    \label{fig:cap}
+\end{figure}
+ \subsection{Descripción de los Datos}
+\begin{itemize} 
+
+    \item \( T(t) \): Temperatura del fluido en el tanque.
+    \item \( T_{\text{env}} \): Temperatura del ambiente.
+    \item \( T'(t) \): Temperatura de la resistencia calefactora.
+\end{itemize}
+
+
+\begin{itemize}
+    \item \( \kappa_1 \): Coeficiente de transferencia de calor entre el fluido y el ambiente.
+    \item \( \kappa_2 \): Coeficiente de transferencia de calor entre la resistencia y el fluido.
+    \item \( S_1 \): Área de contacto térmico entre el fluido y el ambiente.
+    \item \( S_2 \): Área de contacto térmico entre la resistencia y el fluido.
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{Tiempo característico de enfriamiento del fluido hacia el ambiente:}
+    \begin{equation}
+        \tau_1 = \frac{c_f m_f}{\kappa_1 S_1}
+    \end{equation}
+    \item \textbf{Tiempo característico de transferencia de calor de la resistencia al fluido:}
+    \begin{equation}
+        \tau_2 = \frac{m_f c_f}{\kappa_2 S_2}
+    \end{equation}
+\end{itemize}
+
+Estos valores se utilizan en las ecuaciones diferenciales del modelo para describir la disipación de calor en el sistema según la Ley de Enfriamiento de Newton.
+\section{Enfoque Matemático}
+\subsection{Ley de Enfriamiento de Newton}
+La tasa de cambio de la temperatura del café se modela mediante la ecuación diferencial:
+\[
+\frac{dT}{dt} = -k(T - T_{\text{ambiente}})
+\]
+donde:
+\begin{itemize}
+    \item \(T(t)\): Temperatura del café en el instante \(t\) (en °C).
+    \item \(T_{\text{ambiente}}\): Temperatura ambiente constante.
+    \item \(k\): Constante de enfriamiento (en \(s^{-1}\)).
+\end{itemize}
+La solución analítica de la ecuación es:
+\[
+T(t) = T_{\text{ambiente}} + (T_0 - T_{\text{ambiente}}) e^{-kt}
+\]
+
+\subsection{Justificación del Método}
+\begin{itemize}
+    \item La Ley de Newton es ideal para establecer con que rapidez se enfria un objeto respecto a la temperatura del ambiente y la temperatura con la que inica el objeto.
+\end{itemize}
+
+\subsection{Suposiciones del Metodo}
+\begin{itemize}
+    \item La temperatura ambiente permanece constante.
+    \item No hay pérdida de calor por evaporación o convección forzada.
+    \item La constante \(k\) dependera del material y la forma de la taza pero se va a ajustar a un valor de 0.1
+\end{itemize}
+
+\section{Plan de Implementación}
+\subsection{Herramientas}
+\begin{itemize}
+    \item Uso de las librerías \texttt{numpy} y \texttt{matplotlib.pyplot}.
+    \item Por medio de Jupyter Notebook.
+\end{itemize}
+
+\subsection{Pasos Clave}
+\begin{enumerate}
+    \item \textbf{Definir parámetros}: \(T_0\), \(T_{\text{ambiente}}\), \(k\).
+    \item \textbf{Generar datos teóricos}: Usar la solución analítica para calcular \(T(t)\).
+    \item \textbf{Visualización}: Graficar \(T(t)\) vs \(t\) para un intervalo de 60 minutos.
+    \item \textbf{Validación}: Comparar la curva teórica con datos experimentales (si se dispone de ellos).
+\end{enumerate}
+\section{Resultados Esperados}
+\begin{itemize}
+    \item Determinar el tiempo para que el café alcance \(60^\circ C\) (apto para consumo).
+    \item Evaluar cómo cambios en \(k\) afectan la velocidad de enfriamiento.
+    \item Se espera obtener una curva de enfriamiento que muestre cómo la temperatura del café disminuye con el tiempo.
+\end{itemize}
+\end{document}
